@@ -53,10 +53,18 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
                      link : "www.espn.com" + link,
                      img : img
                 }
-    
+                
+                  
+                if(header.title !=null && header.body !=null ){
+
                 headerArr.push(header)
     
                 console.log('header arr' , headerArr)
+                }
+
+                else {
+                    return
+                }
     
             
             // please help me understand this line. Andrew helped me with this part    
