@@ -55,7 +55,7 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
                 }
                 
                   
-                if(header.title !=null && header.body !=null ){
+                if(header.title !=null && header.body !=null  && header.img !=null){
 
                 headerArr.push(header)
     
