@@ -1,0 +1,93 @@
+*{
+    color: #fff
+}
+
+.fball-img{
+    width: 20%;
+}
+
+.fball-card{
+    margin-bottom : 2%;
+    
+}
+
+.espn-txt{
+    font-family: 'Mina', sans-serif;
+    text-align: center;
+    font-size: 5.5rem;
+    color: #fff;
+    
+}
+
+.h6-text {
+    font-size: 1%;
+}
+
+
+.espn-logo{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: -3%
+}
+
+
+.jmb-custom {
+    margin : 2%;
+    text-align: center;
+     background: linear-gradient(to right bottom,
+    rgb(0, 0, 0),
+    #000,
+    #000,
+    #000,
+    #d00,
+    #000,
+    #000,
+     #d00 );
+}
+
+.espn-header {
+  /* background-color:  #145a63; */
+  background-color: #d00;
+}
+
+.espn-body{
+/* background: linear-gradient(to right bottom,
+    rgb(0, 0, 0),
+    #000,
+    #000,
+    #000,
+    #d00,    
+    #000,
+    #000,
+     #d00 ); */
+
+    background : black;
+    }
+
+.bg-nav{
+    background: linear-gradient(to right bottom,
+   
+    rgb(0, 0, 0),
+     #d00 );
+     color: #fff !important;
+}
+
+.nav-text{
+    color: #fff !important;
+}
+
+.modal-color{
+    background: linear-gradient(to right bottom,
+    rgb(0, 0, 0),
+    #000,
+    #000,
+    #000,
+    #d00,
+    #000,
+    #000,
+     #d00 );
+}
+
+.cstm-card{
+    height: 25rem;
+}
