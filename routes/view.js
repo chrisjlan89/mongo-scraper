@@ -14,6 +14,7 @@ app.get("/home", function(req, res){
 
     app.get("/saved", function(req, res){
         db.Headline.Headline.find({})
+          .populate("notes")
           .then(function (dbHeadlines) {
             // checkCategory(dbThread)
             res.render('saved', {headlines: dbHeadlines})

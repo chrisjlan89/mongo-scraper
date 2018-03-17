@@ -34,9 +34,11 @@ app.set("view engine", "handlebars");
 require("./routes/api.js")(app, request, cheerio, async, mongoose, bodyParser);
 require("./routes/view.js")(app, path)
 
-mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/mongoScrape")
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScrape";
 
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI)
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
