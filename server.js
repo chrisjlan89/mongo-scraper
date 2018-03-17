@@ -8,7 +8,7 @@ var request = require("request");
 var cheerio = require("cheerio");
 var path = require("path");
 var async = require("async")
-var PORT = 3000;
+var PORT = process.env.PORT || 3000 ;
 
 // Require all models
 var db = require("./models");
