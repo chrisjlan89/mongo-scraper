@@ -4,10 +4,7 @@ var db = require("../models");
 
 module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
 
-    app.get("/", function(req, res){
-        res.send("Helllllllloooooo")
-    })
-    
+  
     app.get("/scrape", function(req, res){
         request("http://www.espn.com/nfl/", function(error, response, html) {
     
