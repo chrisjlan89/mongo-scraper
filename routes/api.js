@@ -111,7 +111,7 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
 
 
 app.get("/scrappedArticles", function(req, res) {
-    // Using our Book model, "find" every book in our db
+    // Using our Headline model, "find" every Headline in our db
     db.Headline.Headline
       .find({})
       .then(function(dbHeadlines) {
@@ -125,14 +125,15 @@ app.get("/scrappedArticles", function(req, res) {
   });
 
 
-  app.get("/populated", function(req, res) {
-    
+  app.post("/populated", function(req, res) {
+      
+    console.log('populate req.body' , req.body)
     db.Headline.Headline
-      .find({})
-      // Specify that we want to populate the retrieved libraries with any associated books
+    
+      .find({_id : req.body._id})
       .populate("notes")
       .then(function(dbHeadWithNotes) {
-        // If any Libraries are found, send them to the client with any associated Books
+        
         res.json(dbHeadWithNotes);
       })
       .catch(function(err) {
@@ -148,7 +149,7 @@ app.get("/scrappedArticles", function(req, res) {
     var note = {
         body : req.body.note
     }
-    // Create a new Book in the database
+    // Create a new Note in the database
     db.Note.Note.create(note)
       .then(function(dbNote) {
           console.log(dbNote)

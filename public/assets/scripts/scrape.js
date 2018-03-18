@@ -42,11 +42,26 @@
           $(document).on('click', '#open-notes', function(event){
             headlineId = $(this).attr('data-articleId')
             console.log(headlineId)
-            console.log('Notes opened')
+            
+             $.post('/populated',{_id: headlineId}, function(response){
+           let  notes = response[0].notes          
+              console.log('response' , notes)
+              for(var i =0; i < notes.length; i++){
+                console.log('note' + i + ' : ' + notes[i].body)
+                $(".note-section" )
+                .append("<h6 class = 'notes'>" + notes[i].body +
+                "</h6> <button class= 'btn btn-danger'> Delete Note </button>");
+              }
+          
+        })
           })
         }
 
         addNote = () => {
+          $(document).on('click', '.close-notes', function(event){
+            $('.note-section').empty()
+          })
+
           $(document).on('click', '#addnote', function(event){
             console.log('note added')
             console.log(headlineId)
@@ -61,4 +76,14 @@
           })
         }
 
+        deleteNote = () => {
+         
+        }
+
+
+      // function getNotes() {
+      //   $.get('/populated', {_id: headlineId}, function(response){
+      //     console.log('response' , response)
+      //   })
+      // }
      
