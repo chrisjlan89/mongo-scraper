@@ -52,7 +52,7 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
                 }
                 
                   
-                if(header.title !=null && header.body !=null  && header.img !=null){
+                if(header.title !=null && header.body !=null  && header.img !=null && headerArr.indexOf(header) == -1){
 
                 headerArr.push(header)
     
@@ -75,11 +75,6 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
                 }) 
                 
           
-              // Save these results in an object that we'll push into the results array we defined earlier
-            //   db.scrapper.insert({
-            //     text : text,
-            //     link: link
-            //   });
             });
           
             });
