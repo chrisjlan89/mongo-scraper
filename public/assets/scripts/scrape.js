@@ -32,11 +32,25 @@
         $(document).on('click', '#savebtn', function(event){
           headlineId =  $(this).attr('data-articleId')
           console.log('article saved')
+          
           $.post("/save", {_id: headlineId}, function(response) {
 
           })
         })
       }
+
+
+      unsaveArticle = () => {
+        $(document).on('click', '#unsavebtn', function(event){
+          headlineId =  $(this).attr('data-articleId')
+          console.log('article removed from saved')
+          $.post("/unsave", {_id: headlineId}, function(response) {
+
+          })
+        })
+      }
+
+   
 
         openNotes = () => {
           $(document).on('click', '#open-notes', function(event){
@@ -49,13 +63,31 @@
               for(var i =0; i < notes.length; i++){
                 console.log('note' + i + ' : ' + notes[i].body)
                 $(".note-section" )
-                .append("<h6 class = 'notes'>" + notes[i].body +
-                "</h6> <button class= 'btn btn-danger'> Delete Note </button>");
+                .append(`<h6 class = notes> ${notes[i].body} 
+                </h6> <button type='button' class= 'deletenote btn btn-danger' data-noteId = ${notes[i]._id}> Delete Note </button>`);
+              
               }
-          
+
+           
         })
           })
         }
+
+
+
+        deleteNote = () => {
+          $(document).on('click', '.deletenote', function(event){
+           
+            noteId  = $(this).attr('data-noteId')
+            console.log(noteId)
+
+            $.post('/deletenote', {_id : noteId}, function(response) {
+              console.log('del hit')
+            })
+          })
+        }
+
+      
 
         addNote = () => {
           $(document).on('click', '.close-notes', function(event){
@@ -64,22 +96,21 @@
 
           $(document).on('click', '#addnote', function(event){
             console.log('note added')
-            console.log(headlineId)
 
+            console.log(headlineId)
+              
            var addedNote =  $('#message-text').val()
            console.log(addedNote)
-             // build out this route
+            $('#message-text').val('')
+     
            $.post('/addNote', {_id: headlineId , note : addedNote}, function(response) {
              console.log('hit')
           })
-
+             
           })
         }
 
-        deleteNote = () => {
-         
-        }
-
+      
 
       // function getNotes() {
       //   $.get('/populated', {_id: headlineId}, function(response){

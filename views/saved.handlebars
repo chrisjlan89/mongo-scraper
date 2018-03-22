@@ -18,18 +18,28 @@
           <img id="top" class="espn-logo" src = "./assets/img/ESPN-Logo.png"></img>
           <h2 class = "espn-txt">Scrapper</h2>
       </div>
+  <div class = "row">    
+ 
+  
   {{#each headlines }}
   {{#if saved}}
-  <div class="card fball-card">
+ 
+    <div class = "col-md-3">
+  <div class="cstm-card card fball-card">
   <h5 class="card-header espn-header">{{title}}<i data-articleId= "{{_id}}"data-toggle="modal" data-target="#newnote" id="open-notes" class="pull-right fa fa-pencil" aria-hidden="true"></i></h5>
   <div class="card-body espn-body">
      <img class="img-responsive ml-auto fball-img" src = "{{img}}"></img>
     <p class="card-text"> {{body}}</p>
     <a href="{{link}}" class="btn btn-danger">Read the full Story at ESPN</a>
+   <button id="unsavebtn" data-articleId="{{_id}}" type="button" class="unsavebutton pull-right btn btn-warning">Unsave Article</button>
   </div>
 </div>
+</div>
+
  {{/if}}
  {{/each}}
+</div>
+
 
 
 
@@ -63,7 +73,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="close-notes btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="addnote" type="button" class="btn btn-primary">Add Note</button>
+        <button id="addnote" type="button" class="btn btn-primary" data-dismiss="modal">Add Note</button>
       </div>
     </div>
   </div>
@@ -75,6 +85,8 @@
 
   </div>
   <script>
+    deleteNote()
+    unsaveArticle()
     openNotes()
     addNote()
   </script>

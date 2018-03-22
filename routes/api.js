@@ -95,17 +95,58 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
            if(dbHeadline[0].saved == false){
         dbHeadline[0].set({ saved: true });
            }
-           else{
-            dbHeadline[0].set({ saved: false }); 
-           }
+        //    else{
+        //     dbHeadline[0].set({ saved: false }); 
+        //    }
         //  dbHeadline.update({ _id: req.body.id }, { $set: { saved: false }})
         dbHeadline[0].save(function (err, updatedHeadline) {
           if (err) return handleError(err);
-          res.send(updatedHeadline);
+         
+          res.location('/')
         });
        })
     })
     
+
+
+    app.post("/unsave", function(req,res) {
+        console.log('inside unsave')
+       db.Headline.Headline
+       .find({_id: req.body._id})
+       .then(function(dbHeadline){
+           console.log('dbHeadline' , dbHeadline)
+           if(dbHeadline[0].saved == true){
+        dbHeadline[0].set({ saved: false });
+           }
+        //    else{
+        //     dbHeadline[0].set({ saved: false }); 
+        //    }
+        //  dbHeadline.update({ _id: req.body.id }, { $set: { saved: false }})
+        dbHeadline[0].save(function (err, updatedHeadline) {
+          if (err) return handleError(err);
+          
+          res.redirect('/saved');
+        });
+       })
+    })
+
+    app.post('/deletenote', function(req,res){
+        console.log('inside del note')
+        console.log(req.body)
+        db.Note.Note.findByIdAndRemove(req.params._id, (err, todo) => {  
+            // As always, handle any potential errors:
+            if (err) return res.status(500).send(err);
+            // We'll create a simple object to send back with a message and the id of the document that was removed
+            // You can really do this however you want, though.
+            const response = {
+                message: "Todo successfully deleted",
+                id: db.Note.Note._id
+            };
+            return res.status(200).send(response);
+        });
+        
+        
+    });
 
   
 
