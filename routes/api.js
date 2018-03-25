@@ -47,7 +47,7 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
                 var header = {
                      title : title,
                      body : body,
-                     link : "www.espn.com" + link,
+                     link : "https://www.espn.com" + link,
                      img : img
                 }
                 
