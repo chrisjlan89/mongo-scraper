@@ -65,14 +65,15 @@ module.exports = function(app, request, cheerio, async, mongoose, bodyParser) {
     
             
             // please help me understand this line. Andrew helped me with this part    
-                
-                async.each(headerArr, function(data){
-                    db.Headline.Headline.create(headerArr , function(error , data){
-                        console.log(headerArr)
+                var i = 0;
+                //async.each(headerArr, function(data){
+                    db.Headline.Headline.create(header , function(error , data){
+                        i++;
+                        console.log(i)
                       
                     })
                     //res.render(data)
-                }) 
+                //}) 
                 
           
             });

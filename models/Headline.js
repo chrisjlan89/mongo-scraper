@@ -7,32 +7,36 @@ var Schema = mongoose.Schema;
 var HeadlineSchema = new Schema({
  
   title: {
-    type: String,
-    unique: true
+    type: 'String',
+    unique: true,
+    //dropDups: true
   },
 
   body : {
-      type : String,
-      unique: true
+      type : 'String',
+      unique: true,
+      //dropDups: true
   },
 
   link : {
-      type : String,
-      unique : true
+      type : 'String',
+      unique : true,
+     //dropDups: true
   },
 
   img : {
-      type : String,
-      unique: true
+      type : 'String',
+      unique: true,
+      //dropDups: true
   },
 
   scrapeDate: {
-    type: Date,
+    type: 'Date',
     default: Date.now
   },
 
   saved : {
-     type: Boolean,
+     type: 'Boolean',
      default : false
   },
 
@@ -49,6 +53,12 @@ var HeadlineSchema = new Schema({
 
 // This creates our model from the above schema, using mongoose's model method
 var Headline = mongoose.model("Headline", HeadlineSchema);
+
+Headline.on('index', function(error) {
+    if (error) {
+        console.log(error);
+    }
+  });
 
 
 module.exports = {HeadlineSchema : HeadlineSchema , Headline : Headline}
